@@ -8,7 +8,7 @@ Curso: Tecnólogo em Análise e Desenvolvimento de Sistemas — UniCesumar (Mari
 | Nome | GitHub |
 |---|---|
 | Eric Barros Arco-Verde | [@Eric-ArcoVerde](https://github.com/Eric-ArcoVerde) |
-| Henrique Estrela Correia | *(a adicionar)* |
+| Henrique Estrela Correia | [@Henrique-Estrela-Correia115](https://github.com/Henrique-Estrela-Correia115) |
 | Valdemar Tieppo Neto | [@valder5780](https://github.com/valder5780) |
 
 ## Sobre o projeto
