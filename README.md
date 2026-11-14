@@ -21,12 +21,35 @@ O sistema substitui o controle feito em anotações, formulários e planilhas se
 
 ## Funcionalidades
 
-1. **Cadastrar ação** — código, escola, tema, data prevista, público-alvo, responsável, quantidade prevista de participantes e situação inicial.
-2. **Listar ações** — exibe todas as ações cadastradas de forma organizada.
-3. **Pesquisar ações** — por código, escola ou tema.
-4. **Atualizar situação** — planejada, realizada ou cancelada; quando realizada, registra a quantidade efetiva de participantes.
-5. **Gerar resumo** — total de ações por situação, total de participantes e percentual de participação em relação ao previsto.
-6. **Validar entradas** — impede códigos repetidos, quantidades negativas, campos obrigatórios vazios e opções inexistentes no menu.
+O programa é operado por um menu principal com seis opções:
+
+| Opção | Funcionalidade | O que faz |
+|---|---|---|
+| 1 | **Cadastrar ação** | Lê código, escola, tema, data prevista, público-alvo, responsável, participantes previstos e situação inicial. Antes de salvar, exibe o resumo e pede confirmação; se o usuário responder "nao", permite corrigir qualquer campo ou cancelar o cadastro. |
+| 2 | **Listar ações** | Exibe todas as ações cadastradas com todos os campos. |
+| 3 | **Pesquisar ação** | Submenu para buscar por código (exato) ou por escola/tema (termo parcial, sem diferenciar maiúsculas de minúsculas). |
+| 4 | **Atualizar situação** | Localiza a ação pelo código (ou lista as ações antes) e altera para planejada, realizada ou cancelada. Quando realizada, registra a quantidade efetiva de participantes. |
+| 5 | **Gerar resumo** | Total de ações por situação, participantes previstos, participantes efetivos e percentual de participação (efetivos ÷ previstos das ações realizadas). |
+| 0 | **Sair** | Encerra o programa. |
+
+### Validações e tratamento de erros
+
+- Letras onde se espera número, números fora do intervalo e quantidades negativas são rejeitados e a entrada é pedida novamente.
+- Campos de texto não podem ficar vazios.
+- Código duplicado é recusado no cadastro.
+- Data é validada no formato `DD/MM/AAAA`, com mês, dia do mês e ano bissexto conferidos.
+- Código inexistente, pesquisa sem resultado e lista/resumo vazios geram mensagem e retorno ao menu.
+- Limite de 100 ações: o sistema avisa ao atingir o limite e impede novos cadastros.
+- O programa nunca é encerrado por erro de entrada; sempre repete a pergunta ou volta ao menu.
+
+## Organização do código
+
+Arquivo único `src/sistema-pse.c`, dividido em:
+
+- **Estrutura de dados** — `struct Acao` e o vetor global `acoes[100]` com contador `totalAcoes`.
+- **Funções de apoio** — leitura validada (`lerTexto`, `lerInteiro`, `lerData`, `lerSituacao`, `lerCodigoNovo`), busca (`buscarPorCodigo`, `contemTexto`), exibição (`imprimirAcao`, `situacaoTexto`) e validação (`dataValida`).
+- **Funcionalidades** — `cadastrarAcao`, `listarAcoes`, `pesquisarAcao`, `atualizarSituacao`, `gerarResumo`.
+- **`main`** — menu em `do/while` que chama as funcionalidades até o usuário escolher sair.
 
 ## Limites éticos e de escopo
 
@@ -67,10 +90,13 @@ Há também um executável já compilado para Windows em `bin/sistema-pse.exe`.
 ├── bin/
 │   └── sistema-pse.exe                     # executável compilado para Windows
 ├── docs/
-│   ├── etapa1/                             # documento escrito, fluxogramas, sprints
+│   ├── etapa1/
+│   │   ├── AEP_2_revisado.pdf              # documento escrito da etapa 1
+│   │   ├── Fluxograma AEP 2 Geral.drawio   # fluxograma geral do sistema
+│   │   └── Fluxograma AEP 2 - pesquisa.drawio   # fluxograma da pesquisa
 │   └── etapa2/
-│       ├── manual-sistema-pse.docx         # manual do usuário
-│       └── diagrama-casos-de-uso-pse.drawio.xml   # diagrama de casos de uso (draw.io)
+│       ├── manual-sistema-pse.pdf          # manual do usuário
+│       └── diagrama-casos-de-uso-pse.drawio.xml   # diagrama de casos de uso
 └── src/
     └── sistema-pse.c                       # código-fonte em C
 ```
@@ -92,10 +118,21 @@ Processo evolutivo, iterativo e incremental, inspirado em práticas do Scrum e o
 
 O planejamento detalhado está em `docs/etapa1/`.
 
+## Documentação
+
+- [Documento da etapa 1](docs/etapa1/AEP_2_revisado.pdf)
+- Fluxogramas: [geral](docs/etapa1/Fluxograma%20AEP%202%20Geral.drawio) e [pesquisa](docs/etapa1/Fluxograma%20AEP%202%20-%20pesquisa.drawio) (abrir em [draw.io](https://app.diagrams.net))
+- [Manual do usuário](docs/etapa2/manual-sistema-pse.pdf)
+- [Diagrama de casos de uso](docs/etapa2/diagrama-casos-de-uso-pse.drawio.xml) (abrir em draw.io)
+
 ## Entregas
 
 - [x] **Etapa 1** — documento escrito (contextualização, requisitos, fluxogramas e planejamento das sprints)
 - [ ] **Etapa 2** — implementação em C, casos de uso, testes, manual do usuário e vídeo de apresentação
+  - [x] Implementação em C
+  - [x] Diagrama de casos de uso
+  - [x] Manual do usuário
+  - [ ] Vídeo de apresentação
 
 ## Referências
 
