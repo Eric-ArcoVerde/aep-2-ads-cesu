@@ -35,38 +35,44 @@ O sistema substitui o controle feito em anotações, formulários e planilhas se
 - **Não** realiza diagnóstico, triagem, prescrição ou recomendação de tratamento.
 - Armazenamento em memória durante a execução (sem banco de dados, interface gráfica ou aplicação web).
 
-<!--
 ## Tecnologias
 
 - Linguagem C (padrão C99 ou superior)
-- Compilador GCC
+- Compilador GCC (Linux) ou Dev-C++/MinGW (Windows)
 - Estruturas utilizadas: `struct`, vetores, funções, estruturas condicionais e laços de repetição
 
 ## Como compilar e executar
 
-```bash
-gcc -Wall -o pse_em_acao src/main.c
-./pse_em_acao
-```
-
-No Windows (MinGW):
+Linux:
 
 ```bash
-gcc -Wall -o pse_em_acao.exe src\main.c
-pse_em_acao.exe
+gcc -Wall -Wextra -o sistema-pse src/sistema-pse.c
+./sistema-pse
 ```
 
-> As instruções serão atualizadas na 2ª etapa, conforme a estrutura final dos arquivos-fonte.
--->
+Windows (MinGW ou Dev-C++):
+
+```bash
+gcc -Wall -Wextra -o sistema-pse.exe src\sistema-pse.c
+sistema-pse.exe
+```
+
+Há também um executável já compilado para Windows em `bin/sistema-pse.exe`.
+
 ## Estrutura do repositório
 
 ```
 .
 ├── README.md
-├── docs/                 # documentação das etapas
-│   ├── etapa1/           # documento escrito, fluxogramas, pseudocódigos, sprints
-│   └── etapa2/           # casos de uso, testes, manual do usuário, considerações finais
-└── src/                  # código-fonte em C
+├── bin/
+│   └── sistema-pse.exe                     # executável compilado para Windows
+├── docs/
+│   ├── etapa1/                             # documento escrito, fluxogramas, sprints
+│   └── etapa2/
+│       ├── manual-sistema-pse.docx         # manual do usuário
+│       └── diagrama-casos-de-uso-pse.drawio.xml   # diagrama de casos de uso (draw.io)
+└── src/
+    └── sistema-pse.c                       # código-fonte em C
 ```
 
 ## Processo de desenvolvimento
