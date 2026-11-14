@@ -128,11 +128,11 @@ O planejamento detalhado está em `docs/etapa1/`.
 ## Entregas
 
 - [x] **Etapa 1** — documento escrito (contextualização, requisitos, fluxogramas e planejamento das sprints)
-- [ ] **Etapa 2** — implementação em C, casos de uso, testes, manual do usuário e vídeo de apresentação
+- [x] **Etapa 2** — implementação em C, casos de uso, testes, manual do usuário e vídeo de apresentação
   - [x] Implementação em C
   - [x] Diagrama de casos de uso
   - [x] Manual do usuário
-  - [ ] Vídeo de apresentação
+  - [x] Vídeo de apresentação (link no manual)
 
 ## Referências
 
